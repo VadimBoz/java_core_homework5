@@ -1,6 +1,7 @@
-package ru.geekbrains.core.lesson5;
+package main.java.ru.geekbrains.core.lesson5;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class Tree {
 
@@ -22,25 +23,20 @@ public class Tree {
             System.out.print("├─");
             indent += "│ ";
         }
-        System.out.println(file.getName());
+
+        if (file.isDirectory()) {
+            System.out.println(file.getName() + " (DIR)");
+        } else System.out.println(file.getName() + " (file)");
+
 
         File[] files = file.listFiles();
+        if (files == null) return;
 
-        int subDirTotal = 0;
-        for (int i = 0; i < files.length; i++){
-            if (files[i].isDirectory())
-            {
-                subDirTotal++;
-            }
-        }
+        int countFiles = files.length;
+        Arrays.sort(files);
 
-        int subDirCounter = 0;
-        for (int i = 0; i < files.length; i++){
-            if (files[i].isDirectory())
-            {
-                print(files[i], indent, subDirTotal == ++subDirCounter);
-            }
+        for (int i = 0; i < countFiles; i++){
+            print(files[i], indent, countFiles == i + 1);
         }
     }
-
 }

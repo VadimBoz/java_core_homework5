@@ -1,4 +1,4 @@
-package ru.geekbrains.core.lesson5;
+package main.java.ru.geekbrains.core.lesson5;
 
 import java.io.File;
 import java.io.FileInputStream;
